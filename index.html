@@ -1,17 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
     <script>
-        getComputerChoice = () => {
-            
+        const computerSelection = getComputerChoice();
+        const playerSelection = "rock";
+        console.log(computerSelection)
+        function getComputerChoice() {       
             let compAnswer = Math.floor(Math.random() * 3 + 1);
-            console.log(compAnswer)
             if (compAnswer == 1) {
                 return "Scissors";
             } else if (compAnswer == 2) {
                 return "Paper";
-            } else {return "Stone" }
+            } else {return "Rock" }
         }
-        console.log(getComputerChoice());
+        
+        rpsGame = (playerSelection, computerSelection) => {
+            let lowInput = playerSelection.toLowerCase();
+            console.log(lowInput)
+            if (lowInput == "rock" && computerSelection == "Paper") {
+                return "You lose! Paper beats Rock!";
+            } else if (lowInput == "paper" && computerSelection == "Scissors") {
+                return "You lose! Scissors beat Paper!";
+            } else if (lowInput == "scissors" && computerSelection == "Rock") {
+                return "You lose! Rock beats Scissors!";
+            } else if (lowInput == "rock" && computerSelection == "Scissors") {
+                return "You win! Rock beats Scissors!";
+            } else if (lowInput == "scissors" && computerSelection == "Paper") {
+                return "You win! Scissors beats Paper!";
+            } else if (lowInput == "paper" && computerSelection == "Rock") {
+                return "You win! Paper beats Rock!";
+            } else {return "No winner! play again!"};
+        }
+        console.log(rpsGame(playerSelection, computerSelection))
     </script>
 
 </html>
