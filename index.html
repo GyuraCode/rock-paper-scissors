@@ -1,60 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-    <script>
-        function getComputerChoice() {       
-            let compAnswer = Math.floor(Math.random() * 100 + 1);
-            if (compAnswer < 34) {
-                return "Scissors";
-            } else if (compAnswer < 67) {
-                return "Paper";
-            } else {return "Rock" }
-        }
 
-        let computerSelection;
-        let playerSelection;
-
-        rpsGame = (computerSelection) => {
-            playerSelection = prompt("Rock, Paper or Scissors?")           
-            let lowInput = playerSelection.toLowerCase();
-            computerSelection = getComputerChoice();
-            if (lowInput == "rock" && computerSelection == "Paper") {
-                return "Try harder! My Paper beats your Rock!";
-            } else if (lowInput == "paper" && computerSelection == "Scissors") {
-                return "Pfft, no! My Scissors beats your Paper!";
-            } else if (lowInput == "scissors" && computerSelection == "Rock") {
-                return "Not worth my time! My Rock beats your Scissors!";
-            } else if (lowInput == "rock" && computerSelection == "Scissors") {
-                return "You got lucky! Your Rock beats my Scissors!";
-            } else if (lowInput == "scissors" && computerSelection == "Paper") {
-                return "I wasn't ready yet! Your Scissors beats my Paper!";
-            } else if (lowInput == "paper" && computerSelection == "Rock") {
-                return "... One more! Your Paper beats my Rock!";
-            } else if (lowInput == "scissors" && computerSelection == "Scissors" || lowInput == "paper" && computerSelection == "Paper" || lowInput == "rock" && computerSelection == "Rock") {
-                console.log("Draw! Play again!")
-                rpsGame(computerSelection)
-            } else {
-                console.log("Invalid input! Try again!");
-                rpsGame(computerSelection);
-            };
-        }     
+  
+    <body>
+        <button id="rockBtn">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+        <div id="results"></div>
+        <div id="trackPlayerPoints"></div>
+        <div id="trackCompPoints"></div>
+        <div id="winner"></div>
+    </body>
+    <script src="javascript.js">
         
-        function game() {
-            let winCount = 0;
-            let loseCount = 0;
-            for (let i = 0; i < 5; i++) {
-
-                let result = rpsGame(computerSelection);           
-                if (result == "... One more! Your Paper beats my Rock!" || result == "I wasn't ready yet! Your Scissors beats my Paper!" || result == "You got lucky! Your Rock beats my Scissors!") {
-                    console.log(result);
-                    winCount++;
-                } else if (result == "Pfft, no! My Scissors beats your Paper!" || result == "Try harder! My Paper beats your Rock!" || result == "Not worth my time! My Rock beats your Scissors!") {
-                    console.log(result);
-                    loseCount++
-                }   else {i--}
-            }   return "your wincount is " + winCount + ", and your losecount is " + loseCount + "!"
-            
-        }       
-  console.log(game())
-    </script>
-
+    </script>    
 </html>
