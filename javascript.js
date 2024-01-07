@@ -15,11 +15,13 @@ let playerScore = 0;
 let compScore = 0;
 let winner = ""
 
-const rockInput = document.querySelector(`#rockBtn`);
+const rock = document.querySelector(`#rockBtn`);
 
 const paper = document.querySelector("#paper");
 
-const scissors = document.querySelector("#scissors");       
+const scissors = document.querySelector("#scissors"); 
+
+const reset = document.querySelector("#reset");
 
 const results = document.querySelector("#results");
 
@@ -70,16 +72,34 @@ function playerScissors() {
     rpsGame(computerSelection, "scissors")
 }
 
+function resetGame() {
+    playerScore = 0;
+    compScore = 0;
+    rock.addEventListener('click', playerRock);
+    paper.addEventListener('click', playerPaper);
+    scissors.addEventListener('click', playerScissors);
+    results.textContent = "";
+    whoWon.textContent = "";
+    playerPoints.textContent = 0;
+    compPoints.textContent = 0;
+}
+
 // link buttons to click event, to process through to functions deciding playerSelection
-rockInput.addEventListener('click', playerRock);
+rock.addEventListener('click', playerRock);
 
 paper.addEventListener('click', playerPaper);
 
 scissors.addEventListener('click', playerScissors);
 
+reset.addEventListener('click', resetGame);
+
 // monitors when either player reaches 5 points
 function declareWinner() {
     if (playerScore === 5 || compScore === 5) {
+        scissors.removeEventListener('click', playerScissors);
+        paper.removeEventListener('click', playerPaper);
+        rock.removeEventListener('click', playerRock);
+
         if (playerScore === 5) {
             winner = "Player"
         } else if (compScore === 5) {
